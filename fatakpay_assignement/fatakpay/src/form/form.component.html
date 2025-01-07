@@ -1,0 +1,111 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Registration Form</h2>
+    <form [formGroup]="form" class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"> Personal Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input 
+                        formControlName="name"
+                        id="name" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Enter your full name" 
+                        required>
+                        @if(form.get('name')?.invalid && form.get('name')?.touched){
+                            <div class="text-danger">
+                                Name is required.
+                            </div>
+                        }
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                        id="email" 
+                        type="email" 
+                        class="form-control" 
+                        placeholder="Enter your email address" 
+                        formControlName="email"
+                        required>
+                        @if(form.get('email')?.invalid && form.get('email')?.touched){
+                            <div class="text-danger">
+                               Email  is required.
+                            </div>
+                        }
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input 
+                        id="password" 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Enter your password" 
+                        formControlName="password"
+                        required>
+                        @if(form.get('name')?.invalid && form.get('name')?.touched){
+                            <div class="text-danger">
+                                Password is required.
+                            </div>
+                        }
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h4>Address Details</h4>
+            <div formGroupName="addressDetails">
+              <div class="mb-3">
+                <label>Do you want to provide your address?</label>
+                <select class="form-select" formControlName="provideAddress">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+              @if(form.get('addressDetails.provideAddress')?.value === 'Yes'){
+              <div  class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  id="address"
+                  type="text"
+                  class="form-control"
+                  formControlName="address"
+                />
+                <!-- @if(form.get('addressDetails.address')?.invalid && form.get('addressDetails.address')?.touched){
+                <div  class="text-danger">
+                  Address is required.
+                </div>} -->
+              </div>}
+            </div>
+        </div>
+
+        <h4>Step 3: Review and Submit</h4>
+        <div class="summary">
+          <h5>Basic Details:</h5>
+          <p><strong>Name:</strong> {{ form.get('name')?.value }}</p>
+          <p><strong>Email:</strong> {{ form.get('email')?.value }}</p>
+          <p><strong>Password:</strong>{{ form.get('password')?.value }} </p> 
+      
+          <h5>Address Details:</h5>
+          <p><strong>Provide Address:</strong> {{ form.get('addressDetails.provideAddress')?.value }}</p>
+          @if(form.get('addressDetails.provideAddress')?.value === 'Yes'){
+          <p>
+            <strong>Address:</strong> {{ form.get('addressDetails.address')?.value }}
+          </p>}
+          @if(form.get('addressDetails.provideAddress')?.value === 'No'){
+          <p>
+            Address not provided.
+          </p>}
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success px-4" >Submit</button>
+        </div>
+        
+    </form>
+</div>
+
+
+  
