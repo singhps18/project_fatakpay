@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MyApp</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/form'">Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/table-infinty'">Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/customer-rxjs'">Rxjs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/dashboard'">Dashboard</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" her="#">
+            Cart ({{ cartCount }})
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <h6 class="dropdown-header">Items in Cart</h6>
+            @for(product of cartProducts; track  $index){
+            <div>
+              <div>{{ product.title }} - ${{ product.price }}</div>
+              <button class="btn btn-danger btn-sm" (click)="removeFromCart(product.id)">Remove</button>
+            </div>}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Go to Cart</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

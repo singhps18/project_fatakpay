@@ -1,0 +1,22 @@
+.fixed-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 250px; /* Adjust based on your desired image height */
+}
+
+.custom-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body {
+    flex: 1;
+}
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}

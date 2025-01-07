@@ -1,0 +1,70 @@
+<!-- <h1 class="text-center">table heading</h1>
+<table class="table">
+
+     <thead>
+       <tr>
+         <th scope="col">Id</th>
+         <th scope="col">Title</th>
+         <th scope="col">Category</th>
+         <th scope="col">Stock</th>
+         <th scope="col">Date</th>
+         <th scope="col">DiscountPercentage</th>
+       </tr>
+     </thead>
+     <tbody>
+          @for(prod of productItem;track prod.id){  
+       <tr>
+         
+         <th scope="row">{{prod.id}}</th>
+         <td>{{prod.title}}</td>
+         <td>{{prod.category}}</td>
+         <td>{{prod.stock}}</td>
+         <td>{{prod.date}}</td>
+
+         <td>{{prod.discountPercentage}}</td>
+       </tr>
+       <tr>}
+     </tbody>
+</table> -->
+
+<mat-card class="full-view-table">
+     <mat-card-header>
+       <mat-card-title>Company Employee Information</mat-card-title>
+     </mat-card-header>
+     <mat-card-content>
+       <div class="example-ngx-datatable">
+         <ngx-datatable 
+           class="material full-height-table"
+           [rows]="rows()"
+           [columnMode]="ColumnMode.force"
+           [headerHeight]="60"
+           [rowHeight]="50"
+           [scrollbarV]="true"
+           (scroll)="onScroll($event)">
+           
+           <ngx-datatable-column name="Company" prop="company" headerClass="datatable-header">
+             <ng-template let-row="row" ngx-datatable-cell-template>
+               {{ row.company }}
+             </ng-template>
+           </ngx-datatable-column>
+           
+           <ngx-datatable-column name="Name" prop="name" headerClass="datatable-header">
+             <ng-template let-row="row" ngx-datatable-cell-template>
+               {{ row.name }}
+             </ng-template>
+           </ngx-datatable-column>
+           
+           <ngx-datatable-column name="Gender" prop="gender" headerClass="datatable-header">
+             <ng-template let-row="row" ngx-datatable-cell-template>
+               {{ row.gender }}
+             </ng-template>
+           </ngx-datatable-column>
+         </ngx-datatable>
+         @if(isLoading){
+         <div class="loading-indicator" >
+           Loading more rows...
+         </div>}
+       </div>
+     </mat-card-content>
+</mat-card>
+   

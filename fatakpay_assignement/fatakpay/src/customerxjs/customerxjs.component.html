@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row px-2 ">
+      @for(prod of product; track prod.id) {
+          <div class="col-3 mt-4">
+              <div class="card custom-card fixed-card">
+                  <img src="{{prod.images}}" class="card-img-top fixed-img" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">{{prod.title}}</h5>
+                      <p class="card-text">
+                        &#8377; {{prod.price}}
+                      </p>
+                      <button class="btn btn-outline-secondary"(click)="addCart(prod)">Add to Cart</button>
+                  </div>
+              </div>
+          </div>
+      }
+  </div>
+</div>

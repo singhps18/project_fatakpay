@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="example-box" cdkDrag (cdkDragEnded)="onDragEnded($event, 'box1')">
+          Drag me around
+        </div> 
+      </div>
+      <div class="col">
+        <app-chart cdkDrag (cdkDragEnded)="onDragEnded($event, 'chart')">
+        </app-chart>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <app-tables cdkDrag (cdkDragEnded)="onDragEnded($event, 'table')">
+        </app-tables>
+      </div>
+      <div class="col">
+        <div class="example-box" cdkDrag (cdkDragEnded)="onDragEnded($event, 'box2')">
+          Drag me around
+        </div> 
+      </div>
+    </div>
+  </div>
+  
